@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -38,6 +39,15 @@ namespace CSAdv
             Value2 = value2;
         }
     }
+
+    class SquareCalculator
+    {
+        public int this[int i] //Indexer
+        {
+            get {return i* i; }
+        }
+    }
+
     internal class Program
     {
         static void Main(string[] args)
@@ -49,6 +59,11 @@ namespace CSAdv
             Console.WriteLine(wantedString.Value);
             Console.WriteLine(wantedInt.Value);
             Console.WriteLine(wantedDouble.Value);
+
+            Console.WriteLine("--------------------");
+
+            SquareCalculator s = new SquareCalculator();
+            Console.WriteLine(s[255]);
         }
     }
 }
