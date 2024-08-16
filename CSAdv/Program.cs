@@ -50,6 +50,21 @@ namespace CSAdv
 
     internal class Program
     {
+        struct Point
+        {
+            public int x;
+            public int y;
+            //public Point() {} //구조체 -> 기본생성자 정의 불가능
+            // 왜 정의가 불가능한가? class는 오버라이드가 되지만 구조체는 그런거 없다.
+            // 그래서 이미 자동으로 만들어진 기본생성자가 있기 때문에 또 기본생성자를 정의할 수 없다.
+
+            public Point(int x, int y) // 구조체 생성자 -> 모든 변수 초기화 해주어야 함
+            {
+                this.x = x;
+                this.y = y;
+            }
+        }
+
         static void NextPos(int x, int y, int vx, int vy, out int rx, out int ry)
         {
             rx = x + vx;
@@ -93,6 +108,12 @@ namespace CSAdv
             Console.WriteLine("현재좌표 x: {0}, y: {1}", x, y);
             NextPos(x, y, vx, vy, out x, out y);
             Console.WriteLine("다음좌표 x: {0}, y: {1}", x, y);
+
+            //Point 구조체 실습
+            Point point; // 구조체 변수 선언. 0바이트 집합
+            point.x = 10; //구조체 변수는 반드시 초기화 해야한다. (안 할 시 컴파일 에러)
+            point.y = 10;
+            Console.WriteLine("point.x: {0}, point.y: {1}", point.x, point.y);
         }
     }
 }
