@@ -54,6 +54,10 @@ namespace CSAdv
         {
             public int x;
             public int y;
+            public string testA;
+            public string testB;
+            //public string testB = "init"; //구조체 내 변수는 선언과 동시에 초기화 불가능
+
             //public Point() {} //구조체 -> 기본생성자 정의 불가능
             // 왜 정의가 불가능한가? class는 오버라이드가 되지만 구조체는 그런거 없다.
             // 그래서 이미 자동으로 만들어진 기본생성자가 있기 때문에 또 기본생성자를 정의할 수 없다.
@@ -62,6 +66,8 @@ namespace CSAdv
             {
                 this.x = x;
                 this.y = y;
+                testA = "initA";
+                testB = "initB";
             }
         }
 
