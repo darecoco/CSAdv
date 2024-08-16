@@ -71,6 +71,27 @@ namespace CSAdv
             }
         }
 
+        class PointClass
+        {
+            public int x;
+            public int y;
+            public PointClass(int x, int y)
+            {
+                this.x = x;
+                this.y = y;
+            }
+        }
+        struct PointStruct
+        {
+            public int x;
+            public int y;
+            public PointStruct(int x, int y)
+            {
+                this.x = x;
+                this.y = y;
+            }
+        }
+
         static void NextPos(int x, int y, int vx, int vy, out int rx, out int ry)
         {
             rx = x + vx;
@@ -115,11 +136,30 @@ namespace CSAdv
             NextPos(x, y, vx, vy, out x, out y);
             Console.WriteLine("다음좌표 x: {0}, y: {1}", x, y);
 
+            Console.WriteLine("--------------------");
+
             //Point 구조체 실습
             Point point; // 구조체 변수 선언. 0바이트 집합
             point.x = 10; //구조체 변수는 반드시 초기화 해야한다. (안 할 시 컴파일 에러)
             point.y = 10;
             Console.WriteLine("point.x: {0}, point.y: {1}", point.x, point.y);
+
+            // 구조체와 클래스 비교 실습
+            PointClass pCA = new PointClass(10, 10); // 클래스 변수 선언. 4바이트 잡힘
+            PointClass pCB = pCA; // 클래스 변수 복사. 주소값 복사
+            pCB.x = 100;
+            pCB.y = 200;
+            Console.WriteLine("pCA.x: {0}, pCA.y: {1}", pCA.x, pCA.y); // 둘 다 같은 객체라
+            Console.WriteLine("pCB.x: {0}, pCB.y: {1}", pCB.x, pCB.y); // 출력 값이 같다.
+            Console.WriteLine();
+
+            PointStruct pSA = new PointStruct(10, 10); // 구조체 변수 선언. 8바이트 잡힘
+            PointStruct pSB = pSA; // 구조체변수 복사. 값 복사!!!(주소값 복사X)
+            pSB.x = 100;
+            pSB.y = 200;
+            Console.WriteLine("pSA.x: {0}, pSA.y: {1}", pSA.x, pSA.y); // 둘은 다른 구조체
+            Console.WriteLine("pSB.x: {0}, pSB.y: {1}", pSB.x, pSB.y); // 출력 값이 다르다!!
+            Console.WriteLine();
         }
     }
 }
